@@ -1,0 +1,22 @@
+{
+  "name": "gadgetbaba-client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node ./scripts/run.mjs dev",
+    "build": "node ./scripts/run.mjs build",
+    "preview": "node ./scripts/run.mjs preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
