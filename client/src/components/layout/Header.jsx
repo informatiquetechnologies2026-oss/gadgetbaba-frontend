@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { categories, navLinks } from "../../data/home";
 import { useStore } from "../../context/StoreContext";
-import { navigate } from "../../lib/navigate";
 import Logo from "../ui/Logo";
 import Icon from "../ui/Icons";
 
-function goSection(href) {
-  if (window.location.pathname !== "/") navigate("/");
-  window.setTimeout(() => {
-    const node = href ? document.querySelector(href) : null;
-    if (node) node.scrollIntoView({ behavior: "smooth" });
-    else window.scrollTo({ top: 0, behavior: "smooth" });
-  }, 40);
-}
-
 export default function Header() {
+  const navigate = useNavigate();
   const { query, setQuery, count, wishlist, openAuth, user } = useStore();
   const [menuOpen, setMenuOpen] = useState(false);
   const [catsOpen, setCatsOpen] = useState(false);
+
+  const goSection = (href) => {
+    if (window.location.pathname !== "/") navigate("/");
+    window.setTimeout(() => {
+      const node = href ? document.querySelector(href) : null;
+      if (node) node.scrollIntoView({ behavior: "smooth" });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 40);
+  };
 
   useEffect(() => {
     const close = () => setCatsOpen(false);

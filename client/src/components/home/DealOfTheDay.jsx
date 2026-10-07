@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { deals } from "../../data/home";
 import { useStore } from "../../context/StoreContext";
-import { navigate } from "../../lib/navigate";
 import { formatInr } from "../../utils/currency";
 import Icon from "../ui/Icons";
 import Stars from "../ui/Stars";
@@ -30,6 +30,7 @@ function useCountdown(start) {
 }
 
 export default function DealOfTheDay() {
+  const navigate = useNavigate();
   const parts = useCountdown(START);
   const { query, wishlist, toggleWishlist, addToCart } = useStore();
   const needle = query.trim().toLowerCase();

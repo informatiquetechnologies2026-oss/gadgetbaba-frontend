@@ -1,24 +1,14 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getProduct } from "../../data/product";
 import { useStore } from "../../context/StoreContext";
-import { navigate } from "../../lib/navigate";
 import { formatInr } from "../../utils/currency";
 import Icon from "../ui/Icons";
 import Shot from "../ui/Shot";
 import Stars from "../ui/Stars";
 
-function go(href) {
-  if (href.startsWith("/#")) {
-    navigate("/");
-    const id = href.slice(2);
-    window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 40);
-    return;
-  }
-  navigate(href);
-  window.scrollTo(0, 0);
-}
-
 export default function ProductPage({ productId }) {
+  const navigate = useNavigate();
   const product = useMemo(() => getProduct(productId), [productId]);
   const { wishlist, toggleWishlist, addToCart, notify } = useStore();
   const [colorId, setColorId] = useState(product?.colors[0]?.id);
@@ -32,6 +22,17 @@ export default function ProductPage({ productId }) {
   const [extraReviews, setExtraReviews] = useState([]);
   const [draft, setDraft] = useState({ name: "", title: "", text: "" });
   const [relatedStart, setRelatedStart] = useState(0);
+
+  const go = (href) => {
+    if (href.startsWith("/#")) {
+      navigate("/");
+      const id = href.slice(2);
+      window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 40);
+      return;
+    }
+    navigate(href);
+    window.scrollTo(0, 0);
+  };
 
   if (!product) {
     return (

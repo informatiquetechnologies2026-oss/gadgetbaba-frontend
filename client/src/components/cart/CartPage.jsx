@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { cartPerks, suggestions } from "../../data/cart";
 import { useStore } from "../../context/StoreContext";
-import { navigate } from "../../lib/navigate";
 import { formatInr } from "../../utils/currency";
 import Icon from "../ui/Icons";
 import Shot from "../ui/Shot";
@@ -10,6 +10,7 @@ const DESIGN_SUBTOTAL = 65497;
 const DESIGN_DISCOUNT = 14501;
 
 export default function CartPage() {
+  const navigate = useNavigate();
   const { cart, count, wishlist, addToCart, removeFromCart, setQty, saveForLater, toggleWishlist, openAuth, user, notify } = useStore();
   const [coupon, setCoupon] = useState("");
   const [couponNote, setCouponNote] = useState("");

@@ -1,6 +1,7 @@
-import { navigate } from "../../lib/navigate";
+import { useNavigate } from "react-router-dom";
 
 export default function Logo({ tone = "dark" }) {
+  const navigate = useNavigate();
   return (
     <a
       className={`logo logo--${tone}`}
