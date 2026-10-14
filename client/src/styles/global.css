@@ -73,26 +73,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   flex: 0 0 auto;
 }
-.logo__mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: var(--orange);
+.logo img {
+  height: 64px;
+  width: auto;
+  display: block;
 }
-.logo__mark svg { width: 30px; height: 30px; }
-.logo__word {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--ink);
-}
-.logo__word span { color: var(--orange); }
-.logo--light .logo__word { color: var(--white); }
 
 .topbar {
   background: var(--ink);
