@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/gadgetbaba-logo.jpg";
+import logoDark from "../../assets/gadgetbaba-logo.png";
+import logoLight from "../../assets/gadgetbaba-logo-light.png";
 
 export default function Logo({ tone = "dark" }) {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function Logo({ tone = "dark" }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >
-      <img src={logo} alt="" />
+      <img src={tone === "light" ? logoLight : logoDark} alt="" />
     </a>
   );
 }
